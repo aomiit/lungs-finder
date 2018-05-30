@@ -59,7 +59,7 @@ def scan(argv):
 
             _, extension = os.path.splitext(file)
 
-            if extension == ".dcm" and dicom_support:
+            if extension.lower() == ".dcm" and dicom_support:
                 parsed = dicomparser.DicomParser(path + os.sep + file)
                 image = np.array(parsed.GetImage(), dtype=np.uint8)
 
@@ -68,7 +68,7 @@ def scan(argv):
 
                 image = cv2.equalizeHist(image)
                 image = cv2.medianBlur(image, 3)
-            elif extension in [".bmp", ".pbm", ".pgm", ".ppm", ".sr", ".ras", ".jpeg", ".jpg", ".jpe", ".png",
+            elif extension.lower() in [".bmp", ".pbm", ".pgm", ".ppm", ".sr", ".ras", ".jpeg", ".jpg", ".jpe", ".png",
                                ".tiff", ".tif"]:
                 image = cv2.imread(path + os.sep + file, 0)
                 image = cv2.equalizeHist(image)

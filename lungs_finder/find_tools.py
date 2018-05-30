@@ -86,4 +86,4 @@ def get_lungs(image, padding=15):
     top_y = min(y_right, y_left)
     bottom_y = max(y_right + height_right, y_left + height_left)
 
-    return image[top_y:bottom_y, x_right:x_left + width_left]
+    return image[top_y:bottom_y, x_right:x_left + width_left],[top_y,bottom_y, x_right,x_left + width_left]

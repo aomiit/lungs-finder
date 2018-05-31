@@ -43,7 +43,7 @@ def get_lungs(image, padding=15):
         left_lung = lbp_finder.find_left_lung_lbp(image)
 
     if right_lung is None and left_lung is None:
-        return None
+        return None,None
     elif right_lung is None:
         x, y, width, height = left_lung
         spine = width / 5
